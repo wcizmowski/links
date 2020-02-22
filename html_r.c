@@ -4,6 +4,8 @@
  */
 
 #include "links.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 struct f_data *init_formatted(struct document_options *opt)
 {
@@ -1189,6 +1191,12 @@ void really_format_html(struct cache_entry *ce, unsigned char *start, unsigned c
 	startf = start;
 	eofff = end;
 	head = init_str(), hdl = 0;
+
+    FILE *fptr;
+    fptr = fopen("1.html","w");
+    fprintf(fptr,"%s",start);
+    fclose(fptr);
+
 	if (ce->head) add_to_str(&head, &hdl, ce->head);
 	scan_http_equiv(start, end, &head, &hdl, &t, d_opt->plain ? NULL : &bg, d_opt->plain || d_opt->col < 2 ? NULL : &bgcolor, 
 #ifdef JS
