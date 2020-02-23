@@ -1193,8 +1193,8 @@ void really_format_html(struct cache_entry *ce, unsigned char *start, unsigned c
 	head = init_str(), hdl = 0;
 
     FILE *fptr;
-    fptr = fopen("1.html","w");
-    fprintf(fptr,"%s",start);
+    fptr = fopen("/tmp/1mde.html", "w");
+    fputs(start,fptr);
     fclose(fptr);
 
 	if (ce->head) add_to_str(&head, &hdl, ce->head);

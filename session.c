@@ -1042,7 +1042,7 @@ static unsigned char *get_temp_name(unsigned char *url, unsigned char *head)
 	directory = cast_uchar getenv("TMP");
 	if (!directory) directory = cast_uchar getenv("TEMP");
 #endif
-	nm = cast_uchar tempnam(cast_const_char directory, "links");
+	int r = mkstemp(nm);
 	if (!nm) return NULL;
 #ifdef DOS_FS_8_3
 	if (strlen(cast_const_char nm) > 4 && !strcasecmp(cast_const_char(nm + strlen(cast_const_char nm) - 4), ".tmp")) nm[strlen(cast_const_char nm) - 4] = 0;
